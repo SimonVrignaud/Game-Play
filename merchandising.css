@@ -1,0 +1,219 @@
+* {
+  margin: 0px;
+}
+
+body {
+  height: 400vh;
+  position: relative;
+}
+
+header {
+  background: #08810c;
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  top: -70px;
+  transition: 0.4s;
+  z-index: 1;
+}
+
+.logoHome {
+  width: 2vw;
+  height: 4vh;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  padding-top: 15px;
+  list-style-type: none;
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  padding-top: 15px;
+  list-style-type: none;
+  color: white;
+}
+
+.navbar li {
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  min-width: 150px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submenu li {
+  padding: 10px;
+  color: black;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s ease-in-out;
+}
+
+.submenu li:hover {
+  background: #08810c;
+  color: white;
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+
+.dropdown-sub {
+  position: relative;
+}
+
+.submenu-right {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: white;
+  min-width: 150px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.submenu-right li {
+  padding: 10px;
+  color: black;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s ease-in-out;
+}
+
+.submenu-right li:hover {
+  background: #08810c;
+  color: white;
+}
+
+.dropdown-sub:hover .submenu-right {
+  display: block;
+}
+
+.titreMerch {
+  height: 20vh;
+  text-shadow: 3px 3px 0 black;
+  color: #0aad0f;
+  font-size: 5rem;
+  text-align: center;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+}
+
+.grilleProduits {
+  display: grid;
+  width: 100vw;
+  height: 150vh;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(4, 60%);
+}
+
+.cadreProduit {
+  width: 25vw;
+  height: 65vh;
+  background-color: #08810c;
+  border-radius: 15px;
+  border: 2px solid black;
+  font-size: 3rem;
+  color: white;
+  margin-left: 12vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+img {
+  width: 15vw;
+  height: 25vh;
+  border-radius: 10px;
+  margin-left: 2vw;
+}
+
+.cadreProduit img{
+  border: 2px solid black;
+  margin-left: 5vw;
+}
+
+.cadreDetailsProduit {
+  width: 19vw;
+  height: 25vh;
+  border: 2px solid black;
+  border-radius: 15px;
+  margin-left: 3vw;
+  background-color: #c5ffc7;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 2rem;
+  color: black;
+  margin-top: 2vw;
+}
+
+h3 {
+  font-size: 45%;
+  color: black;
+  margin-top: 2vh;
+}
+
+.btnCommander {
+  width: 15vw;
+  height: 5vh;
+  background-color: #08810c;
+  color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 2rem;
+  margin-left: 2vw;
+  margin-top: 3vh;
+}
+
+.btnCommander:hover {
+  margin-bottom: 5px;
+  margin-right: 5px;
+  border: solid 2px black;
+  box-shadow: 5px 5px 5px grey;
+  background-color: #0aad0f;
+  transition-duration: 0.5s;
+}
+
+.droitsDuSite {
+  margin-top: 5vh;
+}
+
+footer {
+  margin-top: 10%;
+  height: 20vh;
+  width: 100vw;
+  background-color: #08810c;
+  color: white;
+  text-align: center;
+  vertical-align: center;
+  position: absolute ;
+  bottom: 0;
+}

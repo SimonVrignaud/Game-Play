@@ -1,0 +1,231 @@
+* {
+  margin: 0px;
+}
+
+body {
+  height: 330vh;
+  position: relative;
+}
+
+header {
+  background: #08810c;
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  top: -70px;
+  transition: 0.4s;
+  z-index: 1;
+}
+
+.logoHome {
+  width: 2vw;
+  height: 4vh;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  padding-top: 15px;
+  list-style-type: none;
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  padding-top: 15px;
+  list-style-type: none;
+  color: white;
+}
+
+.navbar li {
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  min-width: 150px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submenu li {
+  padding: 10px;
+  color: black;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s ease-in-out;
+}
+
+.submenu li:hover {
+  background: #08810c;
+  color: white;
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+
+.dropdown-sub {
+  position: relative;
+}
+
+.submenu-right {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: white;
+  min-width: 150px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.submenu-right li {
+  padding: 10px;
+  color: black;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s ease-in-out;
+}
+
+.submenu-right li:hover {
+  background: #08810c;
+  color: white;
+}
+
+.dropdown-sub:hover .submenu-right {
+  display: block;
+}
+
+.titleAcceuil {
+  height: 20vh;
+  text-shadow: 3px 3px 0 black;
+  color: #0aad0f;
+  font-size: 10rem;
+  text-align: center;
+  margin-top: 10vh;
+  margin-bottom: 15vh;
+}
+
+.carousel-container {
+  position: relative;
+  width: 75vw;
+  height: 50vh;
+  overflow: hidden;
+  margin: 60px auto 0;
+}
+
+.carousel {
+  display: flex;
+  width: 500%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+  width: 20%;
+  height: 100%;
+  width: 75vw;
+  height: 50vh;
+  object-fit: contain;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #08810c;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: solid 1px black;
+}
+
+#prev {
+  left: 10px;
+}
+
+#next {
+  right: 10px;
+}
+
+.consoleConstruct, 
+.Jeux,
+.Goodies {
+  height: 50vh;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20vh;
+}
+
+.btnConsoleConstruct,
+.btnJeux,
+.btnGoodies {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 90vw;
+  height: 40vh;
+  border: solid 1px black;
+}
+
+.btnConsoleConstruct:hover,
+.btnJeux:hover,
+.btnGoodies:hover {
+  margin-bottom: 5px;
+  margin-right: 5px;
+  border: solid 2px black;
+  box-shadow: 5px 5px 5px grey;
+  background-color: #0aad0f;
+  transition-duration: 0.5s;
+} 
+
+.imgConsoleConstruct,
+.imgJeux,
+.imgGoodies {
+  width: 25vw;
+  border-radius: 15px;
+  border: solid 1px black;
+}
+
+.paragrapheConsoleConstruct,
+.paragrapheJeux,
+.paragrapheGoodies {
+  margin-top: 5vh;
+  font-size: 5rem;
+}
+
+.droitsDuSite {
+  margin-top: 5vh;
+}
+
+footer {
+  margin-top: 10%;
+  height: 20vh;
+  width: 100vw;
+  background-color: #08810c;
+  color: white;
+  text-align: center;
+  vertical-align: center;
+  position: absolute ;
+  bottom: 0;
+}
