@@ -2,11 +2,9 @@
 require "./ressources/services/_pdo.php";
 $pdo = connexionPDO();
 
-$sql = $pdo->query("SELECT iduser, firstname FROM users, lastName FROM users, birthDate FROM users, adress FROM users, zipCode FROM users, phone FROM users, email FROM users, password FROM users, psswordBis FROM users, cardNumber FROM users, cryptogram FROM users");
+$sql = $pdo->query("SELECT iduser, firstname, lastName, birthDate, adress, zipCode, phone, email, password, psswordBis, cardNumber, cryptogram FROM users");
 
 $users = $sql->fetchall();
-
-$title = $sql->fetchAll();
 
 $title = " CRUD - Read ";
 require("../resources/template/_header.php");
@@ -39,7 +37,17 @@ require("../resources/template/_header.php");
       <?php foreach($users as $user): ?>
         <tr>
           <td><?= $user['iduser']?></td>
-          <td><?= $user['username']?></td>
+          <td><?= htmlspecialchars($user['firstName']) ?></td>
+          <td><?= htmlspecialchars($user['lastName']) ?></td>
+          <td><?= htmlspecialchars($user['birthDate']) ?></td>
+          <td><?= htmlspecialchars($user['adress']) ?></td>
+          <td><?= htmlspecialchars($user['zipCode']) ?></td>
+          <td><?= htmlspecialchars($user['phone']) ?></td>
+          <td><?= htmlspecialchars($user['email']) ?></td>
+          <td><?= htmlspecialchars($user['password']) ?></td>
+          <td><?= htmlspecialchars($user['passworBis']) ?></td>
+          <td><?= htmlspecialchars($user['cardNumber']) ?></td>
+          <td><?= htmlspecialchars($user['cryptogram']) ?></td>
           <td>
             <!-- il faudra certainement changer la ligne de code qui suit -->
             <a href="./exercice/blog/read.php?id<?=$user['idUser'] ?>">Voir</a>

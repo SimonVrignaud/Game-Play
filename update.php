@@ -5,7 +5,7 @@ shouldBeLogged(true, "./exercice/formateur/connexion.php");
 if(empty($_GET["id"]) || $_SESSION["idUser"] != $_GET["id"])
 {
     $_SESSION["idUser"] = "Accés Interdit !";
-    headr("Location: ./02-read.php");
+    header("Location: ./02-read.php");
     exit;
 }
 
@@ -18,7 +18,7 @@ $sql->bindParam(":id", $_GET["id"]);
 $sql->execute();
 $user = $sql->fetch();
 
-$username = $password = $email = "";
+$firstName = $lastName = $birthDate = $adress = $zipCode = $phone = $email = $password = $passwordBis = $cardNumber = $cryptogram = "";
 $error = [];
 $regexPass = "/^(?=.*[!?@#$%^&*.,+-])(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{6,}$/";
 
@@ -44,11 +44,10 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['update']))
     {
       $error["email"] = "Veuillez saisir une adresse email valide";
     }
-    if($emal != $user["eamil"])
+    if($email != $user["eamil"])
     {
-      $sql = $pdo->prepare("SELECT * FROM users WHERE email=:em");
 
-      $sql = bindParam(':em', $email);
+      $sql->bindParam(':em', $email);
       $sql->execute();
 
       $resultat = $sql->fetch();
@@ -83,14 +82,22 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['update']))
   }
   if(empty($error))
   {
-    $sql = $pdo->prepare("UPDATE = users SET username = :us, email = :em, password = :mdp WHEREidUSER = :id");
+    $sql = $pdo->prepare("UPDATE = users SET firstName = :fn, lastName = :ln, birthDate = :bd, adress = :ad, zipCode = :zc, phone = :ph, email = :em, password = :mdp, passwordBis = :mdpb, cardNumber = :cdn, cryptogram = :cpt, WHEREidUSER = :id");
     $sql->execute([
-      "us" => $username,
+      "fn" => $firstName,
+      "ln" => $lastName,
+      "bd" => $birthDate,
+      "ad" => $adress,
+      "zc" => $zipCode,
+      "ph" => $phone,
       "em" => $email,
       "mdp" => $password,
+      "mdpb" => $passwordBis,
+      "cdn" => $cardNumber,
+      "cpt" => $cryptogram,
       "id" => $user["idUser"]
     ]);
-    $_SESSION["username"] = $username;
+    $_SESSION["firstName"] = $firstName;
     $_SESSION["flash"] = "Votre profil a bien été mis à jour.";
     header("Location: /");
     exit;
@@ -103,9 +110,34 @@ if($user):
 ?>
 <form action="" method="post">
 
-  <label for="username"></label>
-  <input type:="text" name="username" id="username" value="<?php echo $user["username"] ?>">
-  <span class="erreur"><?php echo $error["username"]??""; ?></span>
+  <label for="firstName"></label>
+  <input type:="text" name="firstName" id="firstName" value="<?php echo $user["firstName"] ?>">
+  <span class="erreur"><?php echo $error["firstName"]??""; ?></span>
+  <br>
+
+  <label for="lastName"></label>
+  <input type:="text" name="lastName" id="lastName" value="<?php echo $user["lastName"] ?>">
+  <span class="erreur"><?php echo $error["lastName"]??""; ?></span>
+  <br>
+
+  <label for="birthDate"></label>
+  <input type:="text" name="birthDate" id="birthDate" value="<?php echo $user["birthDate"] ?>">
+  <span class="erreur"><?php echo $error["birthDate"]??""; ?></span>
+  <br>
+
+  <label for="adress"></label>
+  <input type:="text" name="adress" id="adress" value="<?php echo $user["adress"] ?>">
+  <span class="erreur"><?php echo $error["adress"]??""; ?></span>
+  <br>
+
+  <label for="zipCode"></label>
+  <input type:="text" name="zipCode" id="zipCode" value="<?php echo $user["zipCode"] ?>">
+  <span class="erreur"><?php echo $error["zipCode"]??""; ?></span>
+  <br>
+
+  <label for="phone"></label>
+  <input type:="text" name="phone" id="phone" value="<?php echo $user["phone"] ?>">
+  <span class="erreur"><?php echo $error["phone"]??""; ?></span>
   <br>
 
   <label for="email"></label>
@@ -121,6 +153,16 @@ if($user):
   <label for="passwordBis"></label>
   <input type:="password" name="passwordBis" id="passwordBis">
   <span class="erreur"><?php echo $error["passwordBis"]??""; ?></span>
+  <br>
+
+  <label for="cardNumber"></label>
+  <input type:="text" name="cardNumber" id="cardNumber" value="<?php echo $user["cardNumber"] ?>">
+  <span class="erreur"><?php echo $error["cardNumber"]??""; ?></span>
+  <br>
+
+  <label for="cryptogram"></label>
+  <input type:="text" name="cryptogram" id="cryptogram" value="<?php echo $user["cryptogram"] ?>">
+  <span class="erreur"><?php echo $error["cryptogram"]??""; ?></span>
   <br>
 
   <input type="submit" value="Mettre à jour" name="update">
