@@ -2,9 +2,9 @@
 require "./ressources/services/_pdo.php";
 $pdo = connexionPDO();
 
-$sql = $pdo->query("SELECT iduser, firstname FROM users, lastName FROM users, birthDate FROM users, adress FROM users, zipCode FROM users, phone FROM users, email FROM users, password FROM users, psswordBis FROM users, cardNumber FROM users, cryptogram FROM users");
+$sql = $pdo->query("SELECT iduser, username FROM users");
 
-$users = $sql->fetchall();
+$users = $sqo->fetchall();
 
 $title = $sql->fetchAll();
 
@@ -21,17 +21,8 @@ require("../resources/template/_header.php");
     <thead>
       <tr>
         <th>id</th>
-        <th>Nom de Famille</th>
-        <th>Prénom</th>
-        <th>Date de Naissance</th>
-        <th>Adresse</th>
-        <th>Zipcode</th>
-        <th>N° de téléphone</th>
-        <th>Adresse Mail</th>
-        <th>Mot de passe</th>
-        <th>Vérification du mot de passe</th>
-        <th>N° de carte</th>
-        <th>Cryptogramme</th>
+        <th>username</th>
+        <th>action</th>
       </tr>
     </thead>
 
