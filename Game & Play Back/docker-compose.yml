@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"  # Le port 80 du conteneur sera mappé au port 8080 de la machine hôte
+    volumes:
+      - ./src:/var/www/html  # Le code PHP sera monté dans le conteneur
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    ports:
+      - "3306:3306"  # Le port MySQL est exposé

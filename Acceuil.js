@@ -1,11 +1,12 @@
 // @ts-nocheck
 "use strict";
 
-const nav = document.querySelector("header");
+const nav = document.querySelector("header"); 
 const carousel = document.querySelector(".carousel");
 const images = document.querySelectorAll(".carousel img");
 const totalImages = images.length;
 
+/* Ici, on fera descendre la barre de Navigation du site afin qu'elle soit visible des que l'utilisateur aura scrollé vers le bas de plus de 120 pixels. / Here, we have the part of the code that will drop the Navigation bar from the top of the screen as soon as the user had scroll 120 pixels down.*/ 
 window.addEventListener("scroll", () => {
   if (window.scrollY > 120) {
     nav.style.top = 0;
