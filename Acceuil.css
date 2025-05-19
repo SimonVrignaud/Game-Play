@@ -171,7 +171,7 @@ button {
 .consoleConstruct, 
 .Jeux,
 .Goodies {
-  height: 50vh;
+  min-height: 50vh;
   display: flex;
   justify-content: space-around;
   margin-top: 20vh;
@@ -228,4 +228,78 @@ footer {
   vertical-align: center;
   position: absolute ;
   bottom: 0;
+}
+
+@media screen and (max-width: 800px){
+
+  body {
+    height: 430vh;
+  }
+    
+  .titleAcceuil {
+    margin-top: 5vh;
+    margin-bottom: 0vh;
+    font-size: 5rem;
+  }
+
+  .carousel-container {
+    margin-top: 1vh;
+    height: 60vh;
+  }
+
+  button {
+    margin-top: 20vh;
+  }
+
+  #prev {
+    margin-left: 10vw;
+  }
+
+  #next {
+    margin-right: 10vw;
+  }
+
+  .buttonContainer {
+    width: 100vw;
+    height: 300vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .consoleConstruct, 
+  .Jeux,
+  .Goodies {
+    min-height: 50vh;
+    margin-top: 0vh;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .btnConsoleConstruct,
+  .btnJeux,
+  .btnGoodies {
+    width: 70vw;
+    height: 80vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .imgConsoleConstruct,
+  .imgJeux,
+  .imgGoodies {
+    margin-left: 20vw;
+  }
+
+  .paragrapheConsoleConstruct,
+  .paragrapheJeux,
+  .paragrapheGoodies {
+    margin-bottom: 6vh;
+  }
+
+  .logoHome {
+    width: 5vw;
+  }
+
 }

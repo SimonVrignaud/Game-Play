@@ -183,3 +183,48 @@ footer {
 .droitsDuSite {
   margin-top: 5vh;
 }
+
+@media screen and (max-width: 800px) {
+  
+  body {
+    height: 480vh;
+  }
+  
+  .jeuxNintendo, 
+  .jeuxSEGA,
+  .jeuxPlaystation,
+  .jeuxXBOX {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .btnJeuxNintendo,
+  .btnJeuxSEGA,
+  .btnJeuxPlaystation,
+  .btnJeuxXBOX {
+    width: 70vw;
+      height: 80vh;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+  }
+
+  .imgJeuxNintendo,
+  .imgJeuxSEGA,
+  .imgJeuxPlaystation,
+  .imgJeuxXBOX {
+    margin-left: 21vw;
+    height: 15vh;
+}
+  .paragrapheJeuxNintendo,
+  .paragrapheJeuxSEGA,
+  .paragrapheJeuxPlaystation,
+  .paragrapheJeuxXBOX {
+  margin-bottom: 5vh;
+}
+
+.logoHome {
+  width: 5vw;
+}
+
+}

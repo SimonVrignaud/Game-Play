@@ -3,6 +3,7 @@
 }
 
 body {
+  width: 100vw;
   height: 235vh;
   position: relative;
 }
@@ -182,4 +183,39 @@ footer {
   vertical-align: center;
   position: absolute ;
   bottom: 0;
+}
+
+@media screen and (max-width: 800px) {
+  
+  body {
+    height: 380vh;
+  }
+  
+  .grille {
+    display: grid;
+    width: 100vw;
+    height: 170vh;
+    grid-template-columns: repeat(1, 50%);
+    grid-template-rows: repeat(4, 50%);
+  }
+
+  .btnPeluches,
+  .btnFigurines,
+  .btnTradingCards,
+  .btnMerchandising {
+    width: 70vw;
+    margin-left: 15vw;
+  }
+
+  .imgPeluches,
+  .imgFigurines,
+  .imgTradingCards,
+  .imgMerchandising {
+    width: 50vw;
+  }
+
+  .logoHome {
+    width: 5vw;
+  }
+
 }
