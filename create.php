@@ -1,20 +1,25 @@
 <?php
 
-require "../ressources/services/_shouldBeLogged.php";
-shouldBeLogged(false, "/");
+require "../ressources/services/_shouldBeLogged.php";   /* qui vérifie si l’utilisateur est connecté ou non*/
+shouldBeLogged(false, "/"); /*Si l'utilisateur est déjà connecté, il est redirigé vers la racine /.*/ 
 
 $firstName = $lastName = $birthDate = $adress = $zipcode = $phone = $email = $password = $passwordBis = $cardNumber = $cryptogram = "";
 $error = [];
 
 $regexPass = "/^(?=.*[!?@#$%^&*+-])(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{6,}$/";
+ /*Mot de passe fort : au moins une majuscule, une minuscule, un chiffre, un caractère spécial, 6 caractères minimum.*/ 
 
-if($SERVER['REQUEST_METHOD']==='POST' && isset($_POST['inscription']))
+
+/*Vérification CSRF, Connexion à la base de données via PDO.*/ 
+if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['inscription']))
 {
   require "../ressources/services/_csrf.php";
   require "../ressources/services/_pdo.php";
 
   $pdo = connexionPDO();
 
+
+  /*Nettoyage et validation du nom, Regex pour un nom simple.*/ 
   if(empty($_POST["firstName"]))
   {
     $error["firstName"] = "Veuillez saisir votre nom de Famille";

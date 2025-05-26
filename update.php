@@ -12,16 +12,19 @@ if(empty($_GET["id"]) || $_SESSION["idUser"] != $_GET["id"])
 require "../ressources/services/_csrf.php";
 require "../ressources/services/_pdo.php";
 
+// Connexion à la base de données et récupération des informations de l’utilisateur à modifier.
 $pdo = connexionPDO();
 $sql = $pdo->prepare("SELECT * FROM users WHERE idUser = :id");
 $sql->bindParam(":id", $_GET["id"]);
 $sql->execute();
 $user = $sql->fetch();
 
+// Initialisation des variables du formulaire et définition d’une regex pour valider les mots de passe.
 $firstName = $lastName = $birthDate = $adress = $zipCode = $phone = $email = $password = $passwordBis = $cardNumber = $cryptogram = "";
 $error = [];
 $regexPass = "/^(?=.*[!?@#$%^&*.,+-])(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{6,}$/";
 
+// Si le formulaire a été soumis, on va verifierque le champ est renseigné et respecte une regex.
 if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['update']))
 {
   if(empty($_POST["username"]))
@@ -172,4 +175,18 @@ if($user):
   <?php
   endif;
   require("../ressources/template/_footer.php");
+
+  // Génération du token
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
+// Dans le formulaire
+<input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
+// Vérification lors de l'envoi
+if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    die("Tentative CSRF détectée !");
+}
+
   ?>
+
+  

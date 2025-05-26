@@ -2,7 +2,7 @@
 require "./ressources/services/_pdo.php";
 $pdo = connexionPDO();
 
-$sql = $pdo->query("SELECT iduser, firstname, lastName, birthDate, adress, zipCode, phone, email, password, psswordBis, cardNumber, cryptogram FROM users");
+$sql = $pdo->query("SELECT idUser, firstname, lastName, birthDate, adress, zipCode, phone, email, password, passwordBis, cardNumber, cryptogram FROM users");
 
 $users = $sql->fetchall();
 
@@ -37,7 +37,7 @@ require("../resources/template/_header.php");
       <?php foreach($users as $user): ?>
         <tr>
           <td><?= $user['iduser']?></td>
-          <td><?= htmlspecialchars($user['firstName']) ?></td>
+          <td><?= htmlspecialchars($user['firstName']) ?></td> <!--htmlspecialchars() évite les failles XSS lors de l'affichage. -->
           <td><?= htmlspecialchars($user['lastName']) ?></td>
           <td><?= htmlspecialchars($user['birthDate']) ?></td>
           <td><?= htmlspecialchars($user['adress']) ?></td>
@@ -45,12 +45,12 @@ require("../resources/template/_header.php");
           <td><?= htmlspecialchars($user['phone']) ?></td>
           <td><?= htmlspecialchars($user['email']) ?></td>
           <td><?= htmlspecialchars($user['password']) ?></td>
-          <td><?= htmlspecialchars($user['passworBis']) ?></td>
+          <td><?= htmlspecialchars($user['passwordBis']) ?></td>
           <td><?= htmlspecialchars($user['cardNumber']) ?></td>
           <td><?= htmlspecialchars($user['cryptogram']) ?></td>
           <td>
-            <!-- il faudra certainement changer la ligne de code qui suit -->
-            <a href="./exercice/blog/read.php?id<?=$user['idUser'] ?>">Voir</a>
+            <!-- Cela limite l’édition/suppression à l’utilisateur actuellement connecté -->
+            <a href="./exercice/blog/read.php?id<?= $user['idUser'] ?>">Voir</a>
             <?php if(isset($_SESSION["idUser"]) && $_SESSION["idUser"] == $user["idUser"]):?>
               <a href="03-update.php?id=<?= $user['idUser'] ?>">Modifier</a> |
               <a href="04-delete.php?id=<?= $user['idUser'] ?>">Supprimer</a>
