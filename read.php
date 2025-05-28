@@ -1,8 +1,10 @@
 <?php
+session_start();
+
 require "./ressources/services/_pdo.php";
 $pdo = connexionPDO();
 
-$sql = $pdo->query("SELECT idUser, firstname, lastName, birthDate, adress, zipCode, phone, email, password, passwordBis, cardNumber, cryptogram FROM users");
+$sql = $pdo->query("SELECT idUser, firstName, lastName, birthDate, adress, zipCode, phone, email FROM users");
 
 $users = $sql->fetchall();
 
@@ -14,7 +16,7 @@ require("../resources/template/_header.php");
 <h3>Liste Utilisateurs</h3>
 
 
-<?php if($users): ?>
+<?php if(count($users) > 0): ?>
   <table>
     <thead>
       <tr>
@@ -26,17 +28,13 @@ require("../resources/template/_header.php");
         <th>Zipcode</th>
         <th>N° de téléphone</th>
         <th>Adresse Mail</th>
-        <th>Mot de passe</th>
-        <th>Vérification du mot de passe</th>
-        <th>N° de carte</th>
-        <th>Cryptogramme</th>
       </tr>
     </thead>
 
     <tbody>
       <?php foreach($users as $user): ?>
         <tr>
-          <td><?= $user['iduser']?></td>
+          <td><?= $user['idUser']?></td>
           <td><?= htmlspecialchars($user['firstName']) ?></td> <!--htmlspecialchars() évite les failles XSS lors de l'affichage. -->
           <td><?= htmlspecialchars($user['lastName']) ?></td>
           <td><?= htmlspecialchars($user['birthDate']) ?></td>

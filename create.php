@@ -53,7 +53,7 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['inscription']))
   {
     $birthDate = cleandata($_POST["birthDate"]);
       /*Il faudra également voir avec Nolween pourquoi il y a u nprobleme ici*/ 
-    if(!preg_match(^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19|20)\d{2}$, $birthDate))
+    if(!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$/", $birthDate))
       {
         $error["birthDate"] = "Veuillez saisir votre date de Naissance.";
       }
@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['inscription']))
   {
     $adress = cleandata($_POST["adress"]);
 
-    if(!preg_match())/* petit probleme avec la regex, il faudra demander à Nolween*/ 
+    if(!preg_match("/^[\w\s,'-.]{5,100}$/", $adress))/* */ 
       {
         $error["adress"] = "Veuillez saisir votre adresse.";
       }
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['inscription']))
   {
     $zipCode = cleandata($_POST["zipCode"]);
 
-    if(!pref_match(^\d{5}$, $zipCode))
+    if(!pref_match("/^\d{5}$/", $zipCode))
       {
         $error["zipCode"] = "Veuilez saisir vote code postal.";
       }
@@ -92,7 +92,7 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['inscription']))
   {
     $phone = cleandata($_POST["phone"]);
 
-    if(!preg_match(^(0[6-7]\d{8}|[1-9]\d{9})$, $phone))
+    if(!preg_match("/^(0[6-7]\d{8}|[1-9]\d{9})$/", $phone))
       {
         $error["phone"] = "Veuillez saisir votre numéro de téléphone.";
       }
@@ -155,7 +155,7 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['inscription']))
   {
     $cardNumber = cleandata($_POST["cardNumber"]);
 
-    if(!preg_match(^[0-9]{16}$, $cardNumber))
+    if(!preg_match("/^[0-9]{16}$/", $cardNumber))
       {
         $error["cardNumber"] = "Veuillez saisir votre numéro de carte.";
       }
@@ -168,7 +168,7 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['inscription']))
     {
       $cryptogram = cleandata($_POST["cryptogram"]);
 
-      if(!preg_match(^\d{3}$, $cryptogram))
+      if(!preg_match("/^\d{3}$/", $cryptogram))
         {
           $error["cryptogram"] = "Veuillez saisir le cryptogramme au dos de votre carte.";
         }

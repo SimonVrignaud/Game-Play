@@ -14,7 +14,7 @@ require "../ressources/services/_pdo.php";
 
 // Connexion à la base de données et récupération des informations de l’utilisateur à modifier.
 $pdo = connexionPDO();
-$sql = $pdo->prepare("SELECT * FROM users WHERE idUser = :id");
+$sql = $pdo->prepare("SELECT idUser, firstName, lastName, birthDate, adress, zipCode, phone, email FROM users WHERE idUser = :id");
 $sql->bindParam(":id", $_GET["id"]);
 $sql->execute();
 $user = $sql->fetch();
@@ -60,32 +60,10 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['update']))
         }
     }
   }
-  if(empty($_POST["password"]))
-  {
-    $password = $user["password"];
-  }
-  else
-  {
-    $password = trim($_POST["password"]);
-    if(empty($_POST["passwordBis"]))
-    {
-      $error["passwordBis"] = "Veuillez confirmar votre mot de passe";
-    }
-    elseif($_POST["password"] != $_POST["passwordBis"])
-    {
-      $error["passwordBis"] = "Les mots de passe ne sont pas les meme.";
-    }
-    if(!preg_match($regexPass, $password))
-    {
-      $error["password"] = "Veuillez saisir un mot de passe valide.";
-    }
-    else{
-      $password = password_hash($password,  PASSWORD_DEFAULT);
-    }
-  }
+  
   if(empty($error))
   {
-    $sql = $pdo->prepare("UPDATE = users SET firstName = :fn, lastName = :ln, birthDate = :bd, adress = :ad, zipCode = :zc, phone = :ph, email = :em, password = :mdp, passwordBis = :mdpb, cardNumber = :cdn, cryptogram = :cpt, WHEREidUSER = :id");
+    $sql = $pdo->prepare("UPDATE users SET firstName = :fn, lastName = :ln, birthDate = :bd, adress = :ad, zipCode = :zc, phone = :ph, email = :em WHERE idUser = :id");
     $sql->execute([
       "fn" => $firstName,
       "ln" => $lastName,
@@ -94,10 +72,6 @@ if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['update']))
       "zc" => $zipCode,
       "ph" => $phone,
       "em" => $email,
-      "mdp" => $password,
-      "mdpb" => $passwordBis,
-      "cdn" => $cardNumber,
-      "cpt" => $cryptogram,
       "id" => $user["idUser"]
     ]);
     $_SESSION["firstName"] = $firstName;
@@ -146,26 +120,6 @@ if($user):
   <label for="email"></label>
   <input type:="email" name="email" id="email" value="<?php echo $user["email"] ?>">
   <span class="erreur"><?php echo $error["email"]??""; ?></span>
-  <br>
-
-  <label for="password"></label>
-  <input type:="password" name="password" id="password">
-  <span class="erreur"><?php echo $error[""]??""; ?></span>
-  <br>
-
-  <label for="passwordBis"></label>
-  <input type:="password" name="passwordBis" id="passwordBis">
-  <span class="erreur"><?php echo $error["passwordBis"]??""; ?></span>
-  <br>
-
-  <label for="cardNumber"></label>
-  <input type:="text" name="cardNumber" id="cardNumber" value="<?php echo $user["cardNumber"] ?>">
-  <span class="erreur"><?php echo $error["cardNumber"]??""; ?></span>
-  <br>
-
-  <label for="cryptogram"></label>
-  <input type:="text" name="cryptogram" id="cryptogram" value="<?php echo $user["cryptogram"] ?>">
-  <span class="erreur"><?php echo $error["cryptogram"]??""; ?></span>
   <br>
 
   <input type="submit" value="Mettre à jour" name="update">

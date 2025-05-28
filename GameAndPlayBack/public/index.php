@@ -1,6 +1,6 @@
 <?php
 
-require_once 'controllers/Productontroller.php';
+require_once __DIR__.'/../app/controllers/ProductController.php';
 
 $controller = new ProductController();
 $action = $_GET['action'] ?? 'index';
@@ -29,5 +29,5 @@ switch ($action) {
     $controller->index();
     break;
   default:
-    echo "action no reconnue";
+    echo "action non reconnue";
 }
