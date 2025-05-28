@@ -211,3 +211,55 @@ footer {
 .droitsDuSite {
   margin-top: 5vh;
 }
+
+@media screen and (max-width: 800px){
+
+  body {
+    height: 700vh;
+  }
+
+  .titreJeux {
+    margin-top: 5vh;
+    margin-bottom: 15vh;
+    font-size: 5rem;
+  }
+
+  .grilleJeux {
+    display: grid;
+    width: 100vw;
+    height: 200vh;
+    grid-template-columns: repeat(1, 50%);
+    grid-template-rows: repeat(8, 40%);
+    margin-top: 5vh;
+  }
+
+  .cadreJeux {
+    width: 72vw;
+    height: 60vh;
+    margin-left: 14vw;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding-bottom: 3vh;
+  }
+
+  img {
+    width: 30vw;
+    margin-left: 20vw;
+  }
+
+  .infoJeux {
+    width: 50vw;
+    margin-left: 10vw;
+  }
+
+  button {
+    width: 25vw;
+  }
+
+  .logoHome {
+    width: 5vw;
+    margin-left: 0vw;
+  }
+
+}

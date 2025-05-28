@@ -143,18 +143,19 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 
 img {
   width: 15vw;
   height: 25vh;
   border-radius: 10px;
-  margin-left: 2vw;
+  /* margin-left: 2vw; */
 }
 
 .cadreProduit img{
   border: 2px solid black;
-  margin-left: 5vw;
+  /* margin-left: 5vw; */
 }
 
 .cadreDetailsProduit {
@@ -162,7 +163,7 @@ img {
   height: 25vh;
   border: 2px solid black;
   border-radius: 15px;
-  margin-left: 3vw;
+  /* margin-left: 3vw; */
   background-color: #c5ffc7;
   text-align: center;
   display: flex;
@@ -216,4 +217,62 @@ footer {
   vertical-align: center;
   position: absolute ;
   bottom: 0;
+}
+
+@media screen and (max-width: 800px){
+
+  body {
+    height: 700vh;
+  }
+
+  .titreMerch {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-size: 5rem;
+  }
+
+  .grilleProduits {
+    display: grid;
+    width: 100vw;
+    height: 200vh;
+    grid-template-columns: repeat(1, 50%);
+    grid-template-rows: repeat(8, 40%);
+    margin-top: 5vh;
+  }
+
+  .cadreProduit {
+    width: 72vw;
+    height: 60vh;
+    margin-left: 14vw;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 3vh;
+  }
+
+  .cadreDetailsProduit{
+    width: 50vw;
+    /* margin-left: 11vw; */
+  }
+
+  img {
+    width: 30vw;
+    /* margin-left: 50vw; */
+  }
+
+  .infoJeux {
+    width: 50vw;
+    margin-left: 10vw;
+  }
+
+  .btnCommander {
+    width: 40vw;
+    margin-left: 4vw;
+  }
+
+  .logoHome {
+    width: 5vw;
+    margin-left: 0vw;
+  }
 }
